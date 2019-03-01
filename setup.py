@@ -6,7 +6,7 @@ from src.pylint_junit import get_version
 from setuptools import setup, find_packages
 
 CWD = abspath(dirname(__file__))
-PACKAGE_NAME='pylint_junit'
+PACKAGE_NAME = 'pylint_junit'
 
 # Get the long description from the README file
 with open(join(CWD, 'README.rst'), encoding='utf-8') as f:
@@ -16,8 +16,7 @@ with open(join(CWD, 'requirements.txt'), encoding="utf-8") as f:
     REQUIREMENTS = f.read().splitlines()
 
 VERSION = get_version()
-CLASSIFIERS='''
-Development Status :: 4 - Beta
+CLASSIFIERS = '''Development Status :: 4 - Beta
 Environment :: Console
 Intended Audience :: Developers
 Intended Audience :: End Users/Desktop
