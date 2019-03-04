@@ -2,7 +2,6 @@
 
 from codecs import open
 from os.path import join, abspath, dirname
-from src.pylint_junit import get_version
 from setuptools import setup, find_packages
 
 CWD = abspath(dirname(__file__))
@@ -15,7 +14,10 @@ with open(join(CWD, 'README.rst'), encoding='utf-8') as f:
 with open(join(CWD, 'requirements.txt'), encoding="utf-8") as f:
     REQUIREMENTS = f.read().splitlines()
 
-VERSION = get_version()
+VERSION_PATH = join(CWD, "src", PACKAGE_NAME, 'version.py')
+exec(compile(open(VERSION_PATH).read(), VERSION_PATH, 'exec'))
+
+
 CLASSIFIERS = '''Development Status :: 4 - Beta
 Environment :: Console
 Intended Audience :: Developers
