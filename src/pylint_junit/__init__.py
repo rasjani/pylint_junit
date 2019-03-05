@@ -20,9 +20,17 @@ class JUnitReporter(BaseReporter):
         BaseReporter.__init__(self, output)
         self.items = {}
         self.current_module = None
+        self.current_filepath  = None
 
     def on_set_current_module(self, module, filepath):
+        if self.current_module is not None and len(self.items[self.current_module].test_cases) == 0:
+            stdout_line = "All checks passed for: {0}".format(self.current_filepath)
+            testcase_name = "{0}:0:0".format(self.current_module)
+            testcase = TestCase(testcase_name, stdout=stdout_line, file=self.current_filepath, line=0)
+            self.items[self.current_module].test_cases.append(testcase)
+
         self.current_module = module
+        self.current_filepath = filepath
         self.items[module] = TestSuite(module)
 
     def on_close(self, stats, previous_stats):
