@@ -1,8 +1,5 @@
 twine
 flake8
-flake8-awesome; python_version > '3.0'
 git+https://github.com/rasjani/pylint-junit.git
-flake8-tabs; python_version > '3.0'
-flake8-builtins
 python-language-server[all]
 -r requirements.txt
