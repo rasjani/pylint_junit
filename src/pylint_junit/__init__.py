@@ -39,7 +39,7 @@ class JUnitReporter(BaseReporter):
     def handle_message(self, msg):
         """Manage message of different type and in the context of path."""
         stdout_line = "{0}:{1}:{2}:{3}".format(msg.path, msg.line, msg.column, getline(msg.path, msg.line).strip())
-        stderr_line = "{0}:{1}".format(msg.msg_id, msg.msg)
+        stderr_line = "{0}:{1}\n{2}".format(msg.msg_id, msg.msg, stdout_line)
         testcase_name = "{0}:{1}:{2}".format(msg.module, msg.line, msg.column)
         testcase = TestCase(testcase_name, stdout=stdout_line, stderr=stderr_line, file=msg.path, line=msg.line, category=msg.category)
         testcase.add_error_info(message=msg.symbol, output=stderr_line)
