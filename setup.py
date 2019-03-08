@@ -41,7 +41,7 @@ Operating System :: POSIX :: Other
 '''.strip().splitlines()
 
 setup(name=PACKAGE_NAME,
-      version=VERSION,
+      version=VERSION,  # noqa: F821
       description='pylint reporter for junit format.',
       long_description=long_description,
       classifiers=CLASSIFIERS,

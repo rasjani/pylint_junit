@@ -5,9 +5,9 @@ import sys
 from linecache import getline
 from pylint.interfaces import IReporter         # noqa: F401 # TODO: Report bug to flake8 tools, its is used in __implements__
 from pylint.reporters import BaseReporter
-from pylint.lint import PyLinter as linter      # noqa: N813,F401
 from junit_xml import TestSuite, TestCase
 from .version import get_version                # noqa: F401
+
 
 class JUnitReporter(BaseReporter):
     """Report messages and layouts in JUnit."""
@@ -20,10 +20,10 @@ class JUnitReporter(BaseReporter):
         BaseReporter.__init__(self, output)
         self.items = {}
         self.current_module = None
-        self.current_filepath  = None
+        self.current_filepath = None
 
     def on_set_current_module(self, module, filepath):
-        if self.current_module is not None and len(self.items[self.current_module].test_cases) == 0:
+        if self.current_module is not None and self.items[self.current_module].test_cases is not None:
             stdout_line = "All checks passed for: {0}".format(self.current_filepath)
             testcase_name = "{0}:0:0".format(self.current_module)
             testcase = TestCase(testcase_name, stdout=stdout_line, file=self.current_filepath, line=0)
@@ -57,6 +57,6 @@ class JUnitReporter(BaseReporter):
         pass
 
 
-def register(linter):  # noqa: F811
+def register(linter):
     """Register the reporter classes with the linter."""
     linter.register_reporter(JUnitReporter)
