@@ -64,7 +64,9 @@ Dependencies
 ============
 
 
-* junit_xml
+* junit_xml__
+
+__ https://github.com/kyrus/python-junit-xml
 
 Bugs / Feedback
 ===============
