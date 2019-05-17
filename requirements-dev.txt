@@ -1,5 +1,5 @@
 twine
 flake8
-git+https://github.com/rasjani/pylint-junit.git
 python-language-server[all]
+git+https://github.com/rasjani/gitchangelog.git@fix-115
 -r requirements.txt
