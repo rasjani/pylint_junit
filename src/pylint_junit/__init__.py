@@ -31,7 +31,8 @@ class JUnitReporter(BaseReporter):
 
         self.current_module = module
         self.current_filepath = filepath
-        self.items[module] = TestSuite(module)
+        if module not in self.items:
+            self.items[module] = TestSuite(module)
 
     def on_close(self, stats, previous_stats):
         pass
