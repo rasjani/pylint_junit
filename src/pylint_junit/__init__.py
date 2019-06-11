@@ -39,15 +39,17 @@ class JUnitReporter(BaseReporter):
 
     def handle_message(self, msg):
         """Manage message of different type and in the context of path."""
-        stdout_line = "{0}:{1}:{2}:{3}".format(msg.path, msg.line, msg.column, getline(msg.path, msg.line).strip())
-        stderr_line = "{0}:{1}\n{2}".format(msg.msg_id, msg.msg, stdout_line)
-        testcase_name = "{0}:{1}:{2}".format(msg.module, msg.line, msg.column)
+        source_line = getline(msg.path, msg.line).strip().decode('utf-8')
+        stdout_line = u"{0}:{1}:{2}:{3}".format(msg.path, msg.line, msg.column, source_line)
+        stderr_line = u"{0}:{1}\n{2}".format(msg.msg_id, msg.msg, stdout_line)
+        testcase_name = u"{0}:{1}:{2}".format(msg.module, msg.line, msg.column)
         testcase = TestCase(testcase_name, stdout=stdout_line, stderr=stderr_line, file=msg.path, line=msg.line, category=msg.category)
         testcase.add_error_info(message=msg.symbol, output=stderr_line)
         self.items[self.current_module].test_cases.append(testcase)
 
     def display_messages(self, layout):
-        print(TestSuite.to_xml_string(self.items.values()), file=self.out)
+        xml_str = TestSuite.to_xml_string(self.items.values())
+        print(xml_str.encode('utf-8'), file=self.out)
 
     def display_reports(self, layout):
         """Don't do nothing in this reporter."""
