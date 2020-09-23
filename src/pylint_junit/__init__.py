@@ -44,7 +44,7 @@ class JUnitReporter(BaseReporter):
         stderr_line = u"{0}:{1}\n{2}".format(msg.msg_id, msg.msg, stdout_line)
         testcase_name = u"{0}:{1}:{2}".format(msg.module, msg.line, msg.column)
         testcase = TestCase(testcase_name, stdout=stdout_line, stderr=stderr_line, file=msg.path, line=msg.line, category=msg.category)
-        testcase.add_error_info(message=msg.symbol, output=stderr_line)
+        testcase.add_failure_info(message=msg.symbol, output=stderr_line)
         self.items[self.current_module].test_cases.append(testcase)
 
     def display_messages(self, layout):
