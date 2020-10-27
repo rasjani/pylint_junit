@@ -71,4 +71,4 @@ __ https://github.com/kyrus/python-junit-xml
 Bugs / Feedback
 ===============
 
-Use Github Issues Tracker @ https://github.com/salabs/pylint_junit/issues
+Use Github Issues Tracker @ https://github.com/rasjani/pylint_junit/issues
