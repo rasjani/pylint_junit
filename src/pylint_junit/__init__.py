@@ -26,7 +26,7 @@ class JUnitReporter(BaseReporter):
         if self.current_module is not None and self.items[self.current_module].test_cases is not None:
             stdout_line = "All checks passed for: {0}".format(self.current_filepath)
             testcase_name = "{0}:0:0".format(self.current_module)
-            testcase = TestCase(testcase_name, stdout=stdout_line, file=self.current_filepath, line=0)
+            testcase = TestCase(testcase_name, classname='pylint', stdout=stdout_line, file=self.current_filepath, line=0)
             self.items[self.current_module].test_cases.append(testcase)
 
         self.current_module = module
@@ -43,7 +43,7 @@ class JUnitReporter(BaseReporter):
         stdout_line = u"{0}:{1}:{2}:{3}".format(msg.path, msg.line, msg.column, source_line)
         stderr_line = u"{0}:{1}\n{2}".format(msg.msg_id, msg.msg, stdout_line)
         testcase_name = u"{0}:{1}:{2}".format(msg.module, msg.line, msg.column)
-        testcase = TestCase(testcase_name, stdout=stdout_line, stderr=stderr_line, file=msg.path, line=msg.line, category=msg.category)
+        testcase = TestCase(testcase_name, classname='pylint', stdout=stdout_line, stderr=stderr_line, file=msg.path, line=msg.line, category=msg.category)
         testcase.add_failure_info(message=msg.symbol, output=stderr_line)
         self.items[self.current_module].test_cases.append(testcase)
 
