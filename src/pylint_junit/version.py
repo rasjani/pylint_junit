@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """ TODO: Add some doc strings """
 
-VERSION = '0.3.0'
+VERSION = '0.3.1'
 
 
 def get_version():
