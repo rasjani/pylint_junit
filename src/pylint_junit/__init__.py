@@ -5,7 +5,7 @@ import sys
 from linecache import getline
 from pylint.interfaces import IReporter         # noqa: F401 # TODO: Report bug to flake8 tools, its is used in __implements__
 from pylint.reporters import BaseReporter
-from junit_xml import TestSuite, TestCase
+from junit_xml_2 import TestSuite, TestCase, to_xml_report_string
 from .version import get_version                # noqa: F401
 
 def to_unicode(line):
@@ -54,7 +54,7 @@ class JUnitReporter(BaseReporter):
         self.items[self.current_module].test_cases.append(testcase)
 
     def display_messages(self, layout):
-        xml_str = TestSuite.to_xml_string(self.items.values())
+        xml_str = to_xml_report_string(self.items.values())
         print(xml_str, file=self.out)
 
     def display_reports(self, layout):

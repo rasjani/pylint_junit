@@ -1,2 +1,2 @@
 pylint
-junit_xml
+junit-xml-2
