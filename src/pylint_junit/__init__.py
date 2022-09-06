@@ -2,6 +2,7 @@
 from __future__ import absolute_import, print_function
 
 import sys
+from typing import TextIO
 from linecache import getline
 from pylint.interfaces import IReporter         # noqa: F401 # TODO: Report bug to flake8 tools, its is used in __implements__
 from pylint.reporters import BaseReporter
@@ -18,11 +19,10 @@ def to_unicode(line):
 class JUnitReporter(BaseReporter):
     """Report messages and layouts in JUnit."""
 
-    __implements__ = IReporter
     name = "junit"
     extension = "junit"
 
-    def __init__(self, output=sys.stdout):
+    def __init__(self, output: TextIO | None = None):
         BaseReporter.__init__(self, output)
         self.items = {}
         self.current_module = None
