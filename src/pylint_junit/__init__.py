@@ -3,7 +3,11 @@ from __future__ import absolute_import, print_function
 
 import sys
 from linecache import getline
-from pylint.interfaces import IReporter         # noqa: F401 # TODO: Report bug to flake8 tools, its is used in __implements__
+try:
+    from pylint.interfaces import IReporter         # noqa: F401 # TODO: Report bug to flake8 tools, its is used in __implements__
+except ImportError:
+    IReporter = None
+
 from pylint.reporters import BaseReporter
 from junit_xml_2 import TestSuite, TestCase, to_xml_report_string
 from .version import get_version                # noqa: F401
