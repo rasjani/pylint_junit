@@ -1,5 +1,4 @@
 twine
 flake8
 python-language-server[all]
-git+https://github.com/rasjani/gitchangelog.git@fix-115
 -r requirements.txt

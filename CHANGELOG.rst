@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.3.3 (2023-03-11)
+------------
+- Add support pylint for 3.0
+
 0.3.2 (2020-27-10)
 ------------
 - Fix classname
