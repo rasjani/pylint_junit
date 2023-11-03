@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.3.4 (2023-03-11)
+------------
+- Fix console output
+
 0.3.3 (2023-03-11)
 ------------
 - Add support pylint for 3.0
