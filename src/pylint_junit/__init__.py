@@ -1,7 +1,8 @@
 """JUnit reporter"""
-from __future__ import absolute_import, print_function
+from __future__ import annotations, absolute_import, print_function
 
-from typing import TextIO, Optional
+import sys
+from typing import TextIO
 from linecache import getline
 try:
     from pylint.interfaces import IReporter         # noqa: F401 # TODO: Report bug to flake8 tools, its is used in __implements__
@@ -26,7 +27,7 @@ class JUnitReporter(BaseReporter):
     name = "junit"
     extension = "junit"
 
-    def __init__(self, output: Optional[TextIO] = None):
+    def __init__(self, output: TextIO | None = None):
         BaseReporter.__init__(self, output)
         self.items = {}
         self.current_module = None
