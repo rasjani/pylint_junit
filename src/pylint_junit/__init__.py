@@ -1,5 +1,5 @@
 """JUnit reporter"""
-from __future__ import absolute_import, print_function
+from __future__ import annotations, absolute_import, print_function
 
 import sys
 from typing import TextIO
@@ -27,7 +27,7 @@ class JUnitReporter(BaseReporter):
     name = "junit"
     extension = "junit"
 
-    def __init__(self, output: TextIO| None = None):
+    def __init__(self, output: TextIO | None = None):
         BaseReporter.__init__(self, output)
         self.items = {}
         self.current_module = None
