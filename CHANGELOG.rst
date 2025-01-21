@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.3.5 (2025-01-21)
+------------
+- Fix to newer pylint compatibility.
+
 0.3.4 (2023-03-11)
 ------------
 - Fix console output
