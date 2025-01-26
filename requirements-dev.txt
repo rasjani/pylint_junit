@@ -1,4 +1,0 @@
-twine
-flake8
-python-language-server[all]
--r requirements.txt

@@ -1,3 +1,5 @@
 dist/
+sdist/
 *.egg-info/
 venv/
+.pdm-build/
